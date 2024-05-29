@@ -3,35 +3,42 @@ const noteDisplay = document.querySelector(".nowplaying");
 const hints = document.querySelectorAll(".hints");
 const gameContainer = document.querySelector(".game-container");
 const scoreElement = document.getElementById("score");
+
 let score = 0;
-const song = [
-  "A",
-  "1",
-  "Z",
-  "2",
-  "E",
-  "R",
-  "3",
-  "T",
-  "4",
-  "Y",
-  "5",
-  "U",
-  "I",
-  "6",
-  "O",
-  "7",
-  "P",
-  "Q",
-  "8",
-  "S",
-  "9",
-  "D",
-  "0",
-  "F",
-];
+
+const songs = {
+  song1: [
+    "I",
+    "I",
+    "I",
+    "I",
+    "U",
+    "Y",
+    "U",
+    "I",
+    "O",
+    "P",
+    "P",
+    "P",
+    "P",
+    "O",
+    "I",
+    "O",
+    "P",
+    "Q",
+    "S",
+    "I",
+    "D",
+    "0",
+    "F",
+  ],
+  song2: ["I", "I", "I", "O", "P", "O", "I", "P", "O", "O", "I"],
+  song3: [], // Add the notes for SONG 3 here
+};
+
+let currentSong = [];
 let currentNoteIndex = 0;
-let dropNoteInterval;
+const dropInterval = 600; // milliseconds
 
 function createNoteElement(note) {
   const noteElement = document.createElement("div");
@@ -41,12 +48,11 @@ function createNoteElement(note) {
 }
 
 function dropNote() {
-  if (currentNoteIndex >= song.length) {
-    clearInterval(dropNoteInterval);
+  if (currentNoteIndex >= currentSong.length) {
     return;
   }
 
-  const currentNote = song[currentNoteIndex];
+  const currentNote = currentSong[currentNoteIndex];
   const noteContainer = document.getElementById(currentNote);
   const noteElement = createNoteElement(currentNote);
   noteContainer.appendChild(noteElement);
@@ -62,16 +68,17 @@ function dropNote() {
   }, 1000 / 60);
 
   currentNoteIndex++;
+
+  // Schedule the next note drop
+  setTimeout(dropNote, dropInterval);
 }
 
 function playNoteFromKey(e) {
   const key = e.key.toUpperCase();
-  console.log(`Key pressed: ${key}`);
   const audio = document.querySelector(`audio[data-key="${key}"]`);
   const keyElement = document.querySelector(`.key[data-key="${key}"]`);
 
   if (!keyElement) {
-    console.log(`No key element found for key: ${key}`);
     return;
   }
 
@@ -80,11 +87,8 @@ function playNoteFromKey(e) {
   noteDisplay.innerHTML = keyNote;
 
   if (audio) {
-    console.log(`Playing sound for key: ${key}`);
     audio.currentTime = 0;
     audio.play();
-  } else {
-    console.log(`No audio found for key: ${key}`);
   }
 
   handleNoteHit(key);
@@ -95,12 +99,15 @@ function handleNoteHit(note) {
   activeNotes.forEach((note) => {
     const noteRect = note.getBoundingClientRect();
     const containerRect = gameContainer.getBoundingClientRect();
-    if (
-      noteRect.top > containerRect.top + 360 &&
-      noteRect.top < containerRect.top + 400
-    ) {
+
+    const finishLineHeightPx = 48;
+    const hitZoneStart =
+      containerRect.top + gameContainer.offsetHeight - finishLineHeightPx;
+    const hitZoneEnd = containerRect.top + gameContainer.offsetHeight;
+
+    if (noteRect.top > hitZoneStart && noteRect.top < hitZoneEnd) {
       note.remove();
-      updateScore(1); // Increase the score by 1 for each correct note hit
+      updateScore(1);
     }
   });
 }
@@ -115,13 +122,21 @@ function hintsOn(e, index) {
 }
 
 function startSong(songName) {
+  const song = songs[songName];
+  if (!song) {
+    console.log(`Song not found: ${songName}`);
+    return;
+  }
+
   console.log(`Starting song: ${songName}`);
   document.getElementById("song-selection-modal").style.display = "none";
 
   currentNoteIndex = 0;
   score = 0; // Reset the score at the start of a new song
   updateScore(0);
-  dropNoteInterval = setInterval(dropNote, 800);
+  currentSong = song;
+
+  dropNote(); // Start dropping notes
 }
 
 function updateScore(points) {
