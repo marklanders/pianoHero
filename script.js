@@ -2,7 +2,8 @@ const keys = document.querySelectorAll(".key");
 const noteDisplay = document.querySelector(".nowplaying");
 const hints = document.querySelectorAll(".hints");
 const gameContainer = document.querySelector(".game-container");
-const selectedSong = [];
+const scoreElement = document.getElementById("score");
+let score = 0;
 const song = [
   "A",
   "1",
@@ -99,6 +100,7 @@ function handleNoteHit(note) {
       noteRect.top < containerRect.top + 400
     ) {
       note.remove();
+      updateScore(1); // Increase the score by 1 for each correct note hit
     }
   });
 }
@@ -117,7 +119,14 @@ function startSong(songName) {
   document.getElementById("song-selection-modal").style.display = "none";
 
   currentNoteIndex = 0;
+  score = 0; // Reset the score at the start of a new song
+  updateScore(0);
   dropNoteInterval = setInterval(dropNote, 800);
+}
+
+function updateScore(points) {
+  score += points;
+  scoreElement.textContent = score;
 }
 
 hints.forEach(hintsOn);
