@@ -46,23 +46,19 @@ h2 {
 }
 
 .keyboard {
-  /* display: flex;
-  position: relative;
-  height: 400px;
+  display: flex;
   width: 100%;
-  margin-top: 0;
-  max-width: 880px;
-  margin-bottom: 20px; */
+  height: 350px;
+  position: relative;
+  margin: 40px auto 0;
 }
 
 .keys {
   display: flex;
   width: 100%;
   height: 350px;
-  /* max-width: 880px; */
   position: relative;
   margin: 40px auto 0;
-  /* cursor: none; */
 }
 
 .key {
@@ -76,15 +72,12 @@ h2 {
 }
 
 .key:not(.sharp) {
-  /* float: left; */
   width: 10%;
-
   height: 100%;
   background: rgba(255, 255, 255, 0.8);
 }
 
 .key.sharp {
-  /* position: absolute; */
   width: 6%;
   height: 60%;
   background: #000;
@@ -93,34 +86,6 @@ h2 {
   top: 0;
   z-index: 3;
 }
-
-/* .key[data-key="1"] {
-  left: 7%;
-}
-
-.key[data-key="2"] {
-  left: 17%;
-}
-
-.key[data-key="3"] {
-  left: 37%;
-}
-
-.key[data-key="4"] {
-  left: 47%;
-}
-
-.key[data-key="5"] {
-  left: 57%;
-}
-
-.key[data-key="6"] {
-  left: 77%;
-}
-
-.key[data-key="7"] {
-  left: 87%;
-} */
 
 .playing {
   transform: scale(0.95);
@@ -156,9 +121,7 @@ h2 {
   position: relative;
   height: 400px;
   width: 100%;
-  /* max-width: 880px; */
   margin-bottom: 20px;
-  /* border: 4px solid white; */
   border-radius: 0.5rem;
 }
 
@@ -166,14 +129,12 @@ h2 {
   position: relative;
   width: 10%;
   height: 100%;
-  /* border: 4px solid white; */
 }
+
 .note-sharp {
   width: 6%;
   height: 100%;
   background-color: rgba(255, 255, 255, 0.156);
-  /* transform: translateY(100%); */
-  /* border: 0; */
 }
 
 .note {
@@ -182,6 +143,7 @@ h2 {
   height: 20px;
   background-color: yellow;
 }
+
 .finish {
   position: absolute;
   width: 100%;
@@ -189,100 +151,116 @@ h2 {
   background-color: rgba(255, 255, 255, 0.445);
   bottom: 1px;
 }
+
 .note-A {
   background-color: red;
 }
+
 .note-Z {
   background-color: blue;
 }
+
 .note-E {
   background-color: green;
 }
+
 .note-R {
   background-color: yellow;
 }
+
 .note-T {
   background-color: orange;
 }
+
 .note-Y {
   background-color: purple;
 }
+
 .note-U {
   background-color: pink;
 }
+
 .note-I {
   background-color: cyan;
 }
+
 .note-O {
   background-color: magenta;
 }
+
 .note-P {
   background-color: lime;
 }
+
 .note-Q {
   background-color: rgb(255, 0, 191);
 }
+
 .note-S {
   background-color: rgb(0, 255, 85);
 }
+
 .note-D {
   background-color: rgb(19, 193, 190);
 }
+
 .note-F {
   background-color: rgb(3, 179, 255);
 }
 
+.note-1,
+.note-2,
+.note-3,
+.note-4,
+.note-5,
+.note-6,
+.note-7,
+.note-8,
+.note-9,
+.note-0 {
+  width: 3%;
+}
+
 .note-1 {
   background-color: rgb(13, 11, 113);
-  width: 3%;
 }
 
 .note-2 {
   background-color: rgb(143, 11, 113);
-  width: 3%;
 }
 
 .note-3 {
   background-color: rgb(33, 133, 113);
-  width: 3%;
 }
 
 .note-4 {
   background-color: rgb(43, 141, 43);
-  width: 3%;
 }
 
 .note-5 {
   background-color: rgb(55, 15, 255);
-  width: 3%;
 }
 
 .note-6 {
   background-color: rgb(22, 323, 244);
-  width: 3%;
 }
 
 .note-7 {
   background-color: rgb(443, 11, 113);
-  width: 3%;
 }
 
 .note-8 {
   background-color: rgb(155, 151, 13);
-  width: 3%;
 }
 
 .note-9 {
   background-color: rgb(444, 210, 222);
-  width: 3%;
 }
 
 .note-0 {
   background-color: rgb(432, 987, 113);
-  width: 3%;
 }
 
-/* Modal Styles */
 .modal {
   display: flex;
   align-items: center;

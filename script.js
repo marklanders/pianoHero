@@ -3,8 +3,6 @@ const noteDisplay = document.querySelector(".nowplaying");
 const hints = document.querySelectorAll(".hints");
 const gameContainer = document.querySelector(".game-container");
 const selectedSong = [];
-// const song = ["T", "P", "O", "I", "T", "T", "T", "P", "O", "I", "Y", "Y"];
-// const song = ["I", "I", "I", "O", "P", "O", "I", "P", "O", "O", "I"];
 const song = [
   "A",
   "1",
@@ -32,6 +30,7 @@ const song = [
   "F",
 ];
 let currentNoteIndex = 0;
+let dropNoteInterval;
 
 function createNoteElement(note) {
   const noteElement = document.createElement("div");
@@ -112,15 +111,15 @@ function removeTransition(e) {
 function hintsOn(e, index) {
   e.setAttribute("style", "transition-delay:" + index * 1 + "ms");
 }
+
 function startSong(songName) {
   console.log(`Starting song: ${songName}`);
-  welcomeMessage.style.display = "none";
+  document.getElementById("song-selection-modal").style.display = "none";
 
   currentNoteIndex = 0;
-  setInterval(dropNote, 1000);
+  dropNoteInterval = setInterval(dropNote, 800);
 }
+
 hints.forEach(hintsOn);
 keys.forEach((key) => key.addEventListener("transitionend", removeTransition));
 window.addEventListener("keydown", playNoteFromKey);
-
-const dropNoteInterval = setInterval(dropNote, 800);
