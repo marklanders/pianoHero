@@ -14,6 +14,7 @@ const finalScoreElement = document.querySelector("#final-score");
 let score = 0;
 let currentSong = [];
 let currentNoteIndex = 0;
+let isPracticeMode = false;
 
 //Declare the songs notes
 const songs = {
@@ -190,6 +191,7 @@ function hintsOn(hint, index) {
 }
 
 function startSong(songName) {
+  isPracticeMode = false;
   const song = songs[songName];
   currentNoteIndex = 0;
   score = 0;
@@ -200,6 +202,13 @@ function startSong(songName) {
   document.querySelector("#song-over-modal").style.display = "none";
 
   dropNote();
+}
+
+function startPracticeMode() {
+  isPracticeMode = true;
+  currentNoteIndex = 0;
+  document.getElementById("song-selection-modal").style.display = "none"; // Hide the song selection modal
+  document.getElementById("song-over-modal").style.display = "none"; // Hide the song over modal
 }
 
 function updateScore(points) {
@@ -248,3 +257,6 @@ window.addEventListener("keydown", playNoteFromKey);
 document
   .querySelector("#restart-button")
   .addEventListener("click", restartGame);
+document
+  .getElementById("practice-button")
+  .addEventListener("click", startPracticeMode);
