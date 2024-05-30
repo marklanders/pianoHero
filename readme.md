@@ -22,7 +22,9 @@ Piano Hero is inspired by popular rhythm games. It allows users to play differen
 
 ## Installation
 
-To get started with Piano Hero, follow these steps:
+You can also test the app by clicking [here](https://marklanders.github.io/pianoHero/) 
+
+To get started with Piano Hero locally, follow these steps:
 
 1. Clone the repository:
    ```bash
@@ -33,6 +35,7 @@ To get started with Piano Hero, follow these steps:
    cd piano-hero
    ```
 3. Open `index.html` in your preferred web browser to start the application.
+
 
 ## Usage
 
