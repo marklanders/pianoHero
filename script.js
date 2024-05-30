@@ -288,12 +288,12 @@ function displayEasterEgg() {
     }, 10000);
   }
 
-  audioElement.play();
+  // audioElement.play();
 
-  setTimeout(() => {
-    audioElement.pause();
-    audioElement.currentTime = 0; // Reset audio to the start
-  }, 10000);
+  // setTimeout(() => {
+  //   audioElement.pause();
+  //   audioElement.currentTime = 0; // Reset audio to the start
+  // }, 10000);
 }
 
 hints.forEach(hintsOn);
