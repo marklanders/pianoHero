@@ -1,7 +1,7 @@
 // Select all key elements and store them in the "keys" variable
 const keys = document.querySelectorAll(".key");
 // Select the element that displays the currently playing note
-const noteDisplay = document.querySelector(".nowplaying");
+// const noteDisplay = document.querySelector(".nowplaying");
 //Select all hint elements and store them in the 'hints' variable
 const hints = document.querySelectorAll(".hints");
 //Select the game container element
@@ -114,14 +114,19 @@ function animateNoteDrop(noteElement) {
     noteElement.style.top = `${position}px`; //https://developer.mozilla.org/en-US/docs/Web/CSS/top, define the top style of the element
     if (position > 385) {
       clearInterval(interval);
-      noteElement.remove();
-      checkForLastNote();
+      noteElement.remove(); // Remove the note element
+      checkForLastNote(); //check if it s the last element to end the game
     }
   }, 1000 / 60);
 }
 
 function playNoteFromKey(e) {
-  const key = e.key ? e.key.toUpperCase() : e.target.dataset.key.toUpperCase();
+  let key;
+  if (e.key) {
+    key = e.key.toUpperCase();
+  } else {
+    key = e.target.dataset.key.toUpperCase();
+  }
   const keyElement = document.querySelector(`.key[data-key="${key}"]`);
 
   if (!keyElement) return;
@@ -130,7 +135,7 @@ function playNoteFromKey(e) {
   const keyNote = keyElement.getAttribute("data-note");
 
   keyElement.classList.add("playing");
-  noteDisplay.textContent = keyNote;
+  // noteDisplay.textContent = keyNote;
 
   if (audio) {
     audio.currentTime = 0;
@@ -152,14 +157,14 @@ function handleNoteHit(note) {
 }
 
 function isInHitZone(noteElement) {
-  const noteRect = noteElement.getBoundingClientRect();
-  const containerRect = gameContainer.getBoundingClientRect();
+  //https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect
+  const noteRect = noteElement.getBoundingClientRect(); // Get the bounding rectangle of the note element
+  const containerRect = gameContainer.getBoundingClientRect(); // Get the bounding rectangle of the game container
   const finishLineHeightPx = 60;
   const hitZoneStart =
     containerRect.top + gameContainer.offsetHeight - finishLineHeightPx;
   const hitZoneEnd = containerRect.top + gameContainer.offsetHeight;
-
-  return noteRect.top > hitZoneStart && noteRect.top < hitZoneEnd;
+  return noteRect.top > hitZoneStart && noteRect.top < hitZoneEnd; // Return true if the note is in the hit zone
 }
 
 function removeTransition(e) {
