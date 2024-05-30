@@ -360,6 +360,20 @@ h2 {
   background-color: #ddd;
 }
 
+#restart-button {
+  background-color: #fff;
+  color: #000;
+  border: none;
+  padding: 10px 20px;
+  margin: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#restart-button:hover {
+  background-color: #ddd;
+}
+
 .score {
   color: #fff;
   font-size: 24px;

@@ -175,6 +175,26 @@ function startSong(songName) {
   dropNote();
 }
 
+document
+  .getElementById("restart-button")
+  .addEventListener("click", restartGame);
+
+function restartGame() {
+  clearIntervals();
+  document.querySelectorAll(".note").forEach((note) => note.remove());
+  score = 0;
+  updateScore(0);
+  currentNoteIndex = 0;
+  document.getElementById("song-selection-modal").style.display = "flex";
+}
+
+function clearIntervals() {
+  const highestIntervalId = setInterval(() => {});
+  for (let i = 0; i < highestIntervalId; i++) {
+    clearInterval(i);
+  }
+}
+
 function updateScore(points) {
   score += points;
   scoreElement.textContent = score;
