@@ -33,15 +33,6 @@ header:after {
   background-size: 70%;
 }
 
-/* h1 {
-  color: #fff;
-  font-size: 50px;
-  font-weight: 400;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  margin: 0;
-} */
-
 h2 {
   color: #fff;
   font-size: 24px;
@@ -176,85 +167,71 @@ h2 {
 
 .note-A {
   background-color: #e57373;
-  /* Light Red */
   --glow-color: rgba(229, 115, 115, 0.8);
 }
 
 .note-Z {
   background-color: #64b5f6;
-  /* Light Blue */
   --glow-color: rgba(100, 181, 246, 0.8);
 }
 
 .note-E {
   background-color: #81c784;
-  /* Light Green */
   --glow-color: rgba(129, 199, 132, 0.8);
 }
 
 .note-R {
   background-color: #fff176;
-  /* Light Yellow */
   --glow-color: rgba(255, 241, 118, 0.8);
 }
 
 .note-T {
   background-color: #ffb74d;
-  /* Light Orange */
   --glow-color: rgba(255, 183, 77, 0.8);
 }
 
 .note-Y {
   background-color: #ba68c8;
-  /* Light Purple */
   --glow-color: rgba(186, 104, 200, 0.8);
 }
 
 .note-U {
   background-color: #f06292;
-  /* Light Pink */
   --glow-color: rgba(240, 98, 146, 0.8);
 }
 
 .note-I {
   background-color: #4dd0e1;
-  /* Light Cyan */
   --glow-color: rgba(77, 208, 225, 0.8);
 }
 
 .note-O {
   background-color: #f8bbd0;
-  /* Light Magenta */
   --glow-color: rgba(248, 187, 208, 0.8);
 }
 
 .note-P {
   background-color: #aed581;
-  /* Light Lime */
   --glow-color: rgba(174, 213, 129, 0.8);
 }
 
 .note-Q {
   background-color: #ff8a65;
-  /* Light Coral */
   --glow-color: rgba(255, 138, 101, 0.8);
 }
 
 .note-S {
   background-color: #9575cd;
-  /* Light Violet */
   --glow-color: rgba(149, 117, 205, 0.8);
 }
 
 .note-D {
   background-color: #4fc3f7;
-  /* Light Sky Blue */
   --glow-color: rgba(79, 195, 247, 0.8);
 }
 
 .note-F {
   background-color: #4db6ac;
-  /* Light Teal */
   --glow-color: rgba(77, 182, 172, 0.8);
 }
 
@@ -273,61 +250,51 @@ h2 {
 
 .note-1 {
   background-color: #ffcc80;
-  /* Light Orange */
   --glow-color: rgba(255, 204, 128, 0.8);
 }
 
 .note-2 {
   background-color: #ffab91;
-  /* Light Coral */
   --glow-color: rgba(255, 171, 145, 0.8);
 }
 
 .note-3 {
   background-color: #80cbc4;
-  /* Light Teal */
   --glow-color: rgba(128, 203, 196, 0.8);
 }
 
 .note-4 {
   background-color: #dce775;
-  /* Light Lime */
   --glow-color: rgba(220, 231, 117, 0.8);
 }
 
 .note-5 {
   background-color: #ffd54f;
-  /* Light Yellow */
   --glow-color: rgba(255, 213, 79, 0.8);
 }
 
 .note-6 {
   background-color: #a1887f;
-  /* Light Brown */
   --glow-color: rgba(161, 136, 127, 0.8);
 }
 
 .note-7 {
   background-color: #90a4ae;
-  /* Light Gray */
   --glow-color: rgba(144, 164, 174, 0.8);
 }
 
 .note-8 {
   background-color: #ff8a80;
-  /* Light Red */
   --glow-color: rgba(255, 138, 128, 0.8);
 }
 
 .note-9 {
   background-color: #ce93d8;
-  /* Light Violet */
   --glow-color: rgba(206, 147, 216, 0.8);
 }
 
 .note-0 {
   background-color: #b0bec5;
-  /* Light Blue Gray */
   --glow-color: rgba(176, 190, 197, 0.8);
 }
 
