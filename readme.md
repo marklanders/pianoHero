@@ -22,7 +22,7 @@ Piano Hero is inspired by popular rhythm games. It allows users to play differen
 
 ## Installation
 
-You can also test the app by clicking [here](https://marklanders.github.io/pianoHero/) 
+You can test the app by clicking [here](https://marklanders.github.io/pianoHero/) 
 
 To get started with Piano Hero locally, follow these steps:
 
