@@ -267,7 +267,7 @@ function checkEasterEggSequence(key) {
 
 function displayEasterEgg() {
   const finishLine = document.querySelector(".finish");
-  const gifSrc = "snoop-dogg-dance.gif";
+  const gifSrc = "./img/snoop-dogg-dance.gif";
   const audioElement = document.getElementById("easter-egg-audio");
 
   for (let i = 0; i < 5; i++) {
@@ -275,11 +275,11 @@ function displayEasterEgg() {
     easterEggElement.src = gifSrc;
     easterEggElement.alt = "Snoop Dogg Dance";
     easterEggElement.style.position = "absolute";
-    easterEggElement.style.width = "100px"; // Adjust the size as needed
-    easterEggElement.style.height = "auto"; // Maintain aspect ratio
+    easterEggElement.style.width = "100px";
+    easterEggElement.style.height = "auto";
     easterEggElement.style.zIndex = "1000";
     easterEggElement.style.bottom = "60px"; // Position above the finish line
-    easterEggElement.style.left = `${(i + 1) * 15}%`; // Distribute evenly
+    easterEggElement.style.left = `${(i + 1) * 15}%`;
 
     finishLine.appendChild(easterEggElement);
 
