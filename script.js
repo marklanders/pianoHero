@@ -23,22 +23,59 @@ const songs = {
     "P",
     "O",
     "I",
+    "I",
     "O",
     "P",
     "Q",
-    "S",
     "I",
+    "9",
     "D",
     "0",
     "F",
   ],
-  song2: ["I", "I", "I", "O", "P", "O", "I", "P", "O", "O", "I"],
-  song3: [], // Add the notes for SONG 3 here
+  song2: ["I", "I", "I", "I", "O", "P", "O", "I", "P", "O", "O", "I"],
+  song3: [
+    "P",
+    "P",
+    "Q",
+    "S",
+    "S",
+    "Q",
+    "P",
+    "O",
+    "I",
+    "I",
+    "O",
+    "P",
+    "P",
+    "O",
+    "O",
+    "P",
+    "P",
+    "Q",
+    "S",
+    "S",
+    "Q",
+    "P",
+    "O",
+    "I",
+    "I",
+    "O",
+    "P",
+    "P",
+    "O",
+    "O",
+    "O",
+    "O",
+    "P",
+    "I",
+    "O",
+  ],
 };
 
 let currentSong = [];
 let currentNoteIndex = 0;
-const dropInterval = 600; // milliseconds
+const dropInterval = 800; // milliseconds
 
 function createNoteElement(note) {
   const noteElement = document.createElement("div");
@@ -69,12 +106,11 @@ function dropNote() {
 
   currentNoteIndex++;
 
-  // Schedule the next note drop
   setTimeout(dropNote, dropInterval);
 }
 
 function playNoteFromKey(e) {
-  const key = e.key.toUpperCase();
+  const key = e.key ? e.key.toUpperCase() : e.target.dataset.key.toUpperCase();
   const audio = document.querySelector(`audio[data-key="${key}"]`);
   const keyElement = document.querySelector(`.key[data-key="${key}"]`);
 
@@ -132,11 +168,11 @@ function startSong(songName) {
   document.getElementById("song-selection-modal").style.display = "none";
 
   currentNoteIndex = 0;
-  score = 0; // Reset the score at the start of a new song
+  score = 0;
   updateScore(0);
   currentSong = song;
 
-  dropNote(); // Start dropping notes
+  dropNote();
 }
 
 function updateScore(points) {
@@ -145,5 +181,8 @@ function updateScore(points) {
 }
 
 hints.forEach(hintsOn);
-keys.forEach((key) => key.addEventListener("transitionend", removeTransition));
+keys.forEach((key) => {
+  key.addEventListener("transitionend", removeTransition);
+  key.addEventListener("click", playNoteFromKey);
+});
 window.addEventListener("keydown", playNoteFromKey);
