@@ -15,6 +15,8 @@ let score = 0;
 let currentSong = [];
 let currentNoteIndex = 0;
 let isPracticeMode = false;
+const easterEggSequence = ["D", "R", "E"];
+let currentSequenceIndex = 0;
 
 //Declare the songs notes
 const songs = {
@@ -157,6 +159,7 @@ function playNoteFromKey(e) {
   }
 
   handleNoteHit(key);
+  checkEasterEggSequence(key);
 }
 
 function handleNoteHit(note) {
@@ -246,6 +249,51 @@ function checkForLastNote() {
 function showSongOverModal() {
   finalScoreElement.textContent = score;
   document.querySelector("#song-over-modal").style.display = "flex";
+}
+
+function checkEasterEggSequence(key) {
+  if (!isPracticeMode) return;
+
+  if (key === easterEggSequence[currentSequenceIndex]) {
+    currentSequenceIndex++;
+    if (currentSequenceIndex === easterEggSequence.length) {
+      displayEasterEgg();
+      currentSequenceIndex = 0;
+    }
+  } else {
+    currentSequenceIndex = 0;
+  }
+}
+
+function displayEasterEgg() {
+  const finishLine = document.querySelector(".finish");
+  const gifSrc = "snoop-dogg-dance.gif";
+  const audioElement = document.getElementById("easter-egg-audio");
+
+  for (let i = 0; i < 5; i++) {
+    const easterEggElement = document.createElement("img");
+    easterEggElement.src = gifSrc;
+    easterEggElement.alt = "Snoop Dogg Dance";
+    easterEggElement.style.position = "absolute";
+    easterEggElement.style.width = "100px"; // Adjust the size as needed
+    easterEggElement.style.height = "auto"; // Maintain aspect ratio
+    easterEggElement.style.zIndex = "1000";
+    easterEggElement.style.bottom = "60px"; // Position above the finish line
+    easterEggElement.style.left = `${(i + 1) * 15}%`; // Distribute evenly
+
+    finishLine.appendChild(easterEggElement);
+
+    setTimeout(() => {
+      easterEggElement.remove();
+    }, 10000);
+  }
+
+  audioElement.play();
+
+  setTimeout(() => {
+    audioElement.pause();
+    audioElement.currentTime = 0; // Reset audio to the start
+  }, 10000);
 }
 
 hints.forEach(hintsOn);
