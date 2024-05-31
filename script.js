@@ -43,10 +43,10 @@ const songs = {
     ["U", 400],
     ["I", 400],
     ["O", 400],
+    ["P", 400],
+    ["P", 400],
     ["P", 800],
-    ["P", 800],
-    ["P", 800],
-    ["P", 800],
+    ["P", 400],
     ["O", 400],
     ["I", 400],
     ["O", 400],
@@ -285,7 +285,7 @@ function displayEasterEgg() {
 
     setTimeout(() => {
       easterEggElement.remove();
-    }, 10000);
+    }, 8000);
   }
 
   audioElement.play();
@@ -293,7 +293,7 @@ function displayEasterEgg() {
   setTimeout(() => {
     audioElement.pause();
     audioElement.currentTime = 0; // Reset audio to the start
-  }, 10000);
+  }, 8000);
 }
 
 hints.forEach(hintsOn);
